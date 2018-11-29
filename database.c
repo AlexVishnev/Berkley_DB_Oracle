@@ -68,7 +68,7 @@ void     data_base_update(t_database *_data, int keys[], void *_addr)
     while((_data->error = ptr->cursor->get(ptr->cursor, &ptr->key, &ptr->data, DB_NEXT)) == 0)
     {
         ptr->data.data = _addr;
-        ptr->key.data = (int)keys[cnt++];
+        ptr->key.data = &keys[cnt++];
     }
 
     if (ptr->cursor != NULL)
