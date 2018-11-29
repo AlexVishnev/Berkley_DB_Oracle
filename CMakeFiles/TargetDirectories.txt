@@ -1,0 +1,3 @@
+/home/avishnev/Projects/TestTasks/IntC/Berkley/CMakeFiles/rebuild_cache.dir
+/home/avishnev/Projects/TestTasks/IntC/Berkley/CMakeFiles/edit_cache.dir
+/home/avishnev/Projects/TestTasks/IntC/Berkley/CMakeFiles/DataBase.dir

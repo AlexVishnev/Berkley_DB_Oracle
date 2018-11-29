@@ -1,0 +1,1 @@
+/usr/bin/cc   -Wall -Wextra -ldb -g   CMakeFiles/DataBase.dir/database.c.o  -o DataBase -rdynamic 

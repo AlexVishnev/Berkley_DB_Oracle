@@ -1,0 +1,1 @@
+/usr/bin/cc   -Wall -Wextra -Werror -lpthread -ldb   CMakeFiles/DatBase.dir/database.c.o  -o DatBase -rdynamic 

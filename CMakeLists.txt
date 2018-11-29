@@ -1,0 +1,5 @@
+cmake_minimum_required (VERSION 2.6)
+project (DataBase)
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -ldb -g")
+file(GLOB SOURCES "database.c")
+add_executable(DataBase ${SOURCES})
