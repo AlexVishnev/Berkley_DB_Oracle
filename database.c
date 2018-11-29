@@ -56,7 +56,7 @@ static void    data_base_read(t_database *_data)
     free(ptr);
 }
 
-void     data_base_update(t_database *_data, int keys[], void *_addr)
+void     data_base_update(t_database *_data, DBT keys[], DBT __data[])
 {
     t_handler *ptr = (t_handler *)malloc(sizeof(t_handler));
 
@@ -67,8 +67,11 @@ void     data_base_update(t_database *_data, int keys[], void *_addr)
     int cnt = 0;
     while((_data->error = ptr->cursor->get(ptr->cursor, &ptr->key, &ptr->data, DB_NEXT)) == 0)
     {
-        ptr->data.data = _addr;
-        ptr->key.data = &keys[cnt++];
+        ptr->data.data = __data[cnt].data;
+        ptr->data.size = __data[cnt].size;
+        ptr->key.data = keys[cnt].data;
+        ptr->key.size = keys[cnt].size;
+        cnt++;
     }
 
     if (ptr->cursor != NULL)
@@ -113,8 +116,9 @@ int main(int ac, char *av[])
     data_base_write(_data, 2 , "still Testing");
     data_base_read(_data);
 
-    int test[5] = {1,2,3,4,5};
-    data_base_update(_data, test , NULL);
+        
+    data_base_update(_data, NULL , NULL); //make sure for array of KEYS and DATAS is equals to length of database
+
     data_base_delete(_data);
     if (_data->db_ptr != NULL)
         _data->db_ptr->close(_data->db_ptr, 0);
